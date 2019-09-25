@@ -1,0 +1,1 @@
+mysql --verbose -u root -proot my_guitar_shop1 < guitar_shop_db.sql

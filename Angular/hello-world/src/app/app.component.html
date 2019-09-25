@@ -1,0 +1,41 @@
+  <table class="table">
+      <thead>
+          <th> age </th>
+          <th> eyeColor </th>
+          <th> name </th>
+          <th> gender </th>
+          <th> company </th>
+      </thead>
+      <tbody>
+        <tr *ngIf="!pessoaSelecionada">
+          <td colspan="5">
+              Selecione alguem
+          </td>
+        </tr>
+        <tr *ngIf="pessoaSelecionada">
+          <td> 
+              <input 
+              type="number" 
+              [(ngModel)]="pessoaSelecionada.age">  
+          </td>
+          <td> {{ pessoaSelecionada.eyeColor }} </td>
+          <td> 
+            <!-- {{ pessoaSelecionada.name }} -->
+            <input 
+              type="text" 
+              [(ngModel)]="pessoaSelecionada.name">
+          <td> {{ pessoaSelecionada.gender }} </td>
+          <td> {{ pessoaSelecionada.company }} </td>
+        </tr>
+      </tbody>
+    </table> 
+
+    <app-lista-pessoas
+      [lista]="pessoas"
+      (escolher)="mostraDetalhes($event)"
+    ></app-lista-pessoas>
+
+ <!-- (35) 98869 5696 -->
+
+
+
