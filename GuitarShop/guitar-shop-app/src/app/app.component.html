@@ -1,8 +1,10 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4">
-      <ul class='list-group'>
 
+  <div class="col-md-4">
+      <ul class='list-group'>
+        <li class='list-group-item active'>
+          <strong>Lista com todas as categorias</strong>
+        </li>
 
         <li class="list-group-item" (click)="clicaCategoria(categoria)" *ngFor="let categoria of minhasCategorias ">
           {{categoria.categoryName}}
@@ -34,26 +36,38 @@
       <ul class='list-group'>
         <li class='list-group-item active'>
           <strong>Detalhes Produtos</strong>, mostre os detalhes do produto selecionado
+        
         </li>
 
-        <th> Codigo </th>
-        <th> Nome </th>
-        <th> Preço </th>
+
 
 
         <li *ngIf="meuProduto" class='list-group-item success'>
-          <input type="number" [(ngModel)]="meuProduto.productID">
-          <input type="text" [(ngModel)]="meuProduto.productCode">
-          <input type="text" [(ngModel)]="meuProduto.productName">
-          <input type="text" [(ngModel)]="meuProduto.listPrice">
-        
+          <td>Categoria: <input type="number" [(ngModel)]="meuProduto.productID"></td>
 
+
+
+        </li>
+        <li *ngIf="meuProduto" class='list-group-item success'>
+          <td>Codigo Produto: <input type="text" [(ngModel)]="meuProduto.productCode"> </td>
+        </li>
+
+        <li *ngIf="meuProduto" class='list-group-item success'>
+          <td>Nome Produto: <input type="text" [(ngModel)]="meuProduto.productName"> </td>
+        </li>
+
+        <li *ngIf="meuProduto" class='list-group-item success'>
+          <td>Valor: <input type="text" [(ngModel)]="meuProduto.listPrice"> </td>
+        </li>
+
+        <li *ngIf="meuProduto" class='list-group-item success'>
+          <h4>Dados do Produto</h4>
           <td>Codigo do Produto: {{meuProduto.productID}}</td><br>
           <td>Codigo da Categoria: {{meuProduto.productCode}}</td><br>
           <td>Nome do Produto: {{meuProduto.productName}}</td><br>
           <td>Preço: {{meuProduto.listPrice}}</td><br>
-
         </li>
+
       </ul>
 
     </div>
@@ -75,14 +89,14 @@
             <div class="form-group">
               <label for="categoryID">Category ID (preendhe automatico com a categoria selecionada) :</label>
               <input type="number" class="form-control" disabled [(ngModel)]="categoryID" name="categoryID"
-                id="categoryID" >
-                
+                id="categoryID">
+
             </div>
 
             <div class="form-group">
               <label for="productCode">Product Code:</label>
-              
-              <input type="text" class="form-control" [(ngModel)]="productCode" name="productCode" id="productCode" >
+
+              <input type="text" class="form-control" [(ngModel)]="productCode" name="productCode" id="productCode">
             </div>
 
             <div class="form-group">
@@ -96,15 +110,13 @@
             </div>
 
             <div class="form-group">
-                <h4>Criar um botao aqui, salvar na base e atualizar a lista de produtos</h4>
+              <h4>Criar um botao aqui, salvar na base e atualizar a lista de produtos</h4>
 
-              <button
-              (click)="SalvarProduto(productName ,categoryID,productCode,listPrice)"
-              >
+              <button (click)="SalvarProduto(productName ,categoryID,productCode,listPrice)">
 
                 Salvar
               </button>
-              
+
             </div>
 
           </div>

@@ -142,10 +142,7 @@ export class AppComponent {
    
   }
 
-  /*
-    Numeros aleatorios
-  
-  */
+
   
  
  
