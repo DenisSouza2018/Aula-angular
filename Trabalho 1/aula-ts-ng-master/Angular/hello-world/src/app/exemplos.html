@@ -1,0 +1,72 @@
+
+<!-- LOOP -->
+<!-- 
+<ul class="list-group">
+  <li 
+    (click)="mostraDetalhes(p)"
+    class="list-group-item" 
+    *ngFor="let p of pessoas">
+    {{ p.name }}
+  </li>
+</ul> 
+-->
+
+<!-- CLICK -->
+<!-- 
+  <ul class="list-group">
+    <li 
+      (click)="mostraDetalhes(p)"
+      class="list-group-item" 
+      *ngFor="let p of pessoas">
+      <input type="text" [(ngModel)]="p.name">
+    </li>
+  </ul>
+-->
+
+<!-- NG MODEL -->
+<!--
+  <ul class="list-group">
+    <li 
+      (click)="mostraDetalhes(p)"
+      class="list-group-item" 
+      *ngFor="let p of pessoas">
+      <input type="text" [(ngModel)]="p.name">
+    </li>
+  </ul> 
+-->
+
+<!-- MOSTRANDO FEIO -->
+<pre> {{ pessoaSelecionada | json }} </pre>
+
+<!-- MOSTRANDO BONITO -->
+<!-- 
+<div class="row">
+<table class="table">
+  <thead>
+      <th> age </th>
+      <th> eyeColor </th>
+      <th> name </th>
+      <th> gender </th>
+      <th> company </th>
+  </thead>
+  <tbody>
+    <tr *ngIf="pessoaSelecionada">
+      <td> {{ pessoaSelecionada.age }} </td>
+      <td> {{ pessoaSelecionada.eyeColor }} </td>
+      <td> {{ pessoaSelecionada.name }} </td>
+      <td> {{ pessoaSelecionada.gender }} </td>
+      <td> {{ pessoaSelecionada.company }} </td>
+    </tr>
+  </tbody>
+</table> 
+</div>
+-->
+
+<!-- exercicio -->
+<div class="row">
+    <app-lista-pessoa [lista]="pessoas" (escolher)="mostraDetalhes($event)"></app-lista-pessoa>
+</div>
+
+<div class="row">
+    <app-detalhe-pessoa [escolhido]="pessoaSelecionada"></app-detalhe-pessoa>
+</div>

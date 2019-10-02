@@ -1,0 +1,166 @@
+<div class="container-fluid">
+  <div class="row">
+ 
+    <div class="col-md-3">
+ 
+      <h3>Categorias:</h3>
+      <ul class='list-group'>
+        <li class="list-group-item" (click)="clicaCategoria(categoria)" *ngFor="let categoria of minhasCategorias">
+          {{ categoria.categoryName }}
+        </li>
+      </ul>
+ 
+    </div>
+ 
+    <div class="col-md-6">
+      <h3>Produtos:</h3>
+      <h4>
+        Filtro vem aqui 
+        <br>
+       
+       <button (click)="filtro(200)" value="1"  >até 299.99</button> <br><br>
+        
+        <button (click)="filtro(300)" value="2" >-de 300.00 a 599.99</button> <br><br>
+         
+        <button (click)="filtro(600)" >-de 600.00 a 999.99</button> <br><br>
+ 
+        <button (click)="filtro(1000)" >-acima de 1,000.00</button> <br><br>
+        
+        
+        <li class='list-group-item active'>
+          <strong>Lista com todas os produtos referente ao filtro de {{valor}}
+          </strong>
+        </li>
+
+        <li class="list-group-item"  *ngFor="let produtos of detalhesProduto ">
+
+          
+          <tr *ngIf="produtos.listPrice <= 299.99 && valor == 200">
+            <ul>Codigo do Produto: {{produtos.productID}}</ul> 
+         <ul> Codigo Categoria: {{produtos.categoryID}}</ul>
+          <ul>Nome Produto: {{produtos.productCode}}</ul>
+          <ul>Valor: {{produtos.listPrice}}</ul>
+          </tr>
+
+          <tr *ngIf="produtos.listPrice >= 300 && produtos.listPrice <= 599.99 && valor == 300">
+            <ul>Codigo do Produto: {{produtos.productID}}</ul> 
+         <ul> Codigo Categoria: {{produtos.categoryID}}</ul>
+          <ul>Nome Produto: {{produtos.productCode}}</ul>
+          <ul>Valor: {{produtos.listPrice}}</ul>
+          </tr>
+         
+          <tr *ngIf="produtos.listPrice >= 600 && produtos.listPrice <= 999.99 && valor == 600">
+            <ul>Codigo do Produto: {{produtos.productID}}</ul> 
+         <ul> Codigo Categoria: {{produtos.categoryID}}</ul>
+          <ul>Nome Produto: {{produtos.productCode}}</ul>
+          <ul>Valor: {{produtos.listPrice}}</ul>
+          </tr>
+
+          <tr *ngIf="produtos.listPrice >= 1000 && valor == 1000">
+            <ul>Codigo do Produto: {{produtos.productID}}</ul> 
+         <ul> Codigo Categoria: {{produtos.categoryID}}</ul>
+          <ul>Nome Produto: {{produtos.productCode}}</ul>
+          <ul>Valor: {{produtos.listPrice}}</ul>
+          </tr>
+
+          
+        </li>
+    
+ 
+        <td></td>
+      </h4>
+      <ul class='list-group'>
+        <li class="list-group-item" (click)="clicaProduto(produto)" *ngFor="let produto of meusProdutos">
+            {{ produto.productName }} - {{ produto.listPrice }} R$
+        </li>
+      </ul>
+ 
+    </div>
+
+    
+ 
+    <div class="col-md-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Category ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>List Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="detalhesProduto">
+            <td>{{ detalhesProduto.productID }}</td>
+            <td>{{ detalhesProduto.categoryID }}</td>
+            <td>{{ detalhesProduto.productCode }}</td>
+            <td>{{ detalhesProduto.productName }}</td>
+            <td>{{ detalhesProduto.listPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+ 
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            Adicionar produto na categoria <strong *ngIf="minhaCategoria">{{ minhaCategoria.categoryName }}</strong>
+        </div>
+        <div class="panel-body">
+ 
+          <div class="form-group">
+            <label for="categoryID">Category ID (preendhe automatico com a categoria selecionada) :</label>
+            <input type="number" class="form-control" disabled [(ngModel)]="categoryID" name="categoryID"
+              id="categoryID">
+          </div>
+ 
+          <div class="form-group">
+            <label for="productCode">Product Code:</label>
+            <input type="text" class="form-control" [(ngModel)]="productCode" name="productCode" id="productCode">
+          </div>
+ 
+          <div class="form-group">
+            <label for="productName">Product Name:</label>
+            <input type="text" class="form-control" [(ngModel)]="productName" name="productName" id="productName">
+          </div>
+ 
+          <div class="form-group">
+            <label for="listPrice">List Price:</label>
+            <input type="number" class="form-control" [(ngModel)]="listPrice" name="listPrice" id="listPrice">
+          </div>
+ 
+          <div class="form-group">
+            <!-- desabilitando os botoes se nao tiver valor -->
+            <button [disabled]='productCode == null || productName == null || listPrice == null' class="btn btn-primary"
+              (click)="adiciona(categoryID,productCode,productName,listPrice)">
+              Salvar
+            </button>
+          </div>
+ 
+        </div>
+      </div>
+ 
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Adicionar categoria <strong>{{ nomeDaCategoria }}</strong>
+ 
+        </div>
+        <div class="panel-body">
+ 
+            <label for="categoriaNome">Nome categoria:</label>
+            <input type="string" class="form-control" [(ngModel)]="categoriaNome" name="categoriaNome" id="categoriaNome">
+ 
+            <input type="button" (click)="adicionaCategoria(categoriaNome)" value="Salvar"  >
+            
+ 
+ 
+        </div>
+      </div>
+ 
+    </div>
+ 
+  </div>
+ 
+ 
+</div>
+ 
+

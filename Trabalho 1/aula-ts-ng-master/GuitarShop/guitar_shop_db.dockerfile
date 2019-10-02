@@ -1,0 +1,8 @@
+FROM mysql:5.7
+
+ENV MYSQL_USER 'mgs_user'
+ENV MYSQL_PASSWORD 'pa55word'
+ENV MYSQL_ROOT_PASSWORD 'root'
+ENV MYSQL_DATABASE 'my_guitar_shop1'
+
+COPY . .
