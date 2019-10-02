@@ -10,21 +10,23 @@
 
   <div class="form-group">
     <label> Nome: </label>
-    <input type="text" class="control-form" [ngModel]="orderModel.name" name="name">
+    <input type="text" class="control-form"  [(ngModel)]="orderModel.name" name="name" >
   </div>
+
+  
 
   <div class="form-group">
     <label> E-mail: </label>
-    <input type="email" class="control-form" [ngModel]="orderModel.email" name="email">
+    <input type="email" class="control-form" [(ngModel)]="orderModel.email" name="email">
   </div>
 
   <div class="form-group">
     <label> Telefone: </label>
-    <input type="tel" class="control-form" [ngModel]="orderModel.phone" name="phone">
+    <input type="tel" class="control-form" [(ngModel)]="orderModel.phone" name="phone">
   </div>
 
   <div class="form-group">
-    <select class="custom-select" [ngModel]="orderModel.drink" name="drink">
+    <select class="custom-select" [(ngModel)]="orderModel.drink" name="drink">
       <option value=""> O que você gostaria de beber? </option>
       <option value="{{b}} " *ngFor='let b of bebidas'> {{b}} </option>
       <option> mais tarde usaremos uma diretiva para preencher as opções do menu suspenso </option>
@@ -34,13 +36,13 @@
   <div class="form-group">
     <label> Quente ou frio? </label>
     <div class="check-form">
-      <input class="formulário-verificação-entrada" type="radio" [ngModel]="orderModel.tempPreference"
-        name="tempPreference" value="hot">
+      <input class="formulário-verificação-entrada" type="radio" [(ngModel)]="orderModel.tempPreference"
+        name="tempPreference" value="Quente">
       <label class="form-check-label"> Quente </label>
     </div>
     <div class="check-form">
-      <input class="formulário-verificação-entrada" type="radio" [ngModel]="orderModel.tempPreference"
-        name="tempPreference" value="cold">
+      <input class="formulário-verificação-entrada" type="radio" [(ngModel)]="orderModel.tempPreference"
+        name="tempPreference" value="Frio">
       <label class="form-check-label"> Frio </label>
     </div>
   </div>
@@ -50,7 +52,7 @@
     <label class="form-check-label"> Envie-me uma mensagem de texto quando meu pedido estiver pronto </label>
   </div>
 
-  <button class="btn btn-primary" (click)="AtualizaModel(orderForm)"> Fazer pedido </button>
+  <button class="btn btn-primary" > Fazer pedido </button>
 
 
 </form>
@@ -58,13 +60,13 @@
 <br>
 <h4>Pedidos</h4>
 
-<div *ngIf='orderModel.phone != 0'>  
+<div >  
 
-  <ul>Nome: {{orderModel.name}} </ul>
-  <ul>Email: {{orderModel.email}} </ul>
-  <ul>Tel: {{orderModel.phone}} </ul>
-  <ul>Drink: {{orderModel.drink}} </ul>
-  <ul>Temperatura: {{orderModel.tempPreference}} </ul>
+  <ul *ngIf= "orderModel.name != '' "  >Nome: {{orderModel.name}} </ul>
+  <ul *ngIf= "orderModel.email != '' ">Email: {{orderModel.email}} </ul>
+  <ul *ngIf='orderModel.phone != 0' >Tel: {{orderModel.phone}} </ul>
+  <ul *ngIf= "orderModel.drink != '' ">Drink: {{orderModel.drink}} </ul>
+  <ul *ngIf= "orderModel.tempPreference != '' ">Temperatura: {{orderModel.tempPreference}} </ul>
 
 </div>
 
