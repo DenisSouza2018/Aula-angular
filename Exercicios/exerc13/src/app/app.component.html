@@ -1,0 +1,62 @@
+<h1>
+  {{title}}
+</h1>
+
+<form #orderForm="ngForm">
+  <div class = "form-group">
+    <label> Nome: </label>
+    <input type = "text" class = "control-form" [ngModel]="orderModel.name" name = "name" >
+  </div>
+
+  <div class = "form-group">
+    <label> E-mail: </label>
+    <input type = "email" class = "control-form" [ngModel]="orderModel.email" name = "email">
+  </div>
+
+  <div class = "form-group">
+    <label> Telefone: </label>
+    <input type = "tel" class = "control-form" [ngModel]="orderModel.phone" name = "phone">
+  </div>
+ 
+  <div class = "form-group">
+    <select class = "custom-select" [ngModel]="orderModel.drink" name = "drink_option">
+      <option value = ""> O que você gostaria de beber? </option>
+      <option value = "" *ngFor='let b of bebidas'> {{b}} </option>
+      <option> mais tarde usaremos uma diretiva para preencher as opções do menu suspenso </option>
+    </select>
+  </div>
+
+  <div class = "form-group">
+    <label> Quente ou frio? </label>
+    <div class = "check-form">
+      <input class = "formulário-verificação-entrada" type = "radio" [ngModel]="orderModel.tempPreference" name = "tempPreference" value = "hot">
+      <label class = "form-check-label"> Quente </label>
+    </div>
+    <div class = "check-form">
+      <input class = "formulário-verificação-entrada" type = "radio" [ngModel]="orderModel.tempPreference" name = "tempPreference" value = "cold"> 
+      <label class = "form-check-label"> Frio </label>
+    </div>
+  </div>
+  
+  <div class = "verificação de formulário mb-3">
+    <input class = "formulário-verificação-entrada" type = "caixa de seleção"   nome = "sendmsg">
+    <label class = "form-check-label"> Envie-me uma mensagem de texto quando meu pedido estiver pronto </label>
+  </div>
+    
+  <button class = "btn btn-primary" (click)="AtualizaModel(orderForm)" > Fazer pedido </button>
+  
+
+</form>  
+
+<br>
+{{orderForm.value.name}} <br>
+{{orderForm.value.email}} <br>
+{{orderForm.value.phone}} <br>
+{{orderForm.value.drink}} <br>
+{{orderForm.value.tempPreference}} <br>
+<br>
+
+
+<h2>Equipe</h2>
+<li *ngFor='let m of membros' > {{m}} </li>
+
