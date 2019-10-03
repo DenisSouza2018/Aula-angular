@@ -1,75 +1,79 @@
-
-
 <form #orderForm="ngForm">
-  
-  <div>
-      <h1>
+
+    <div>
+        <h1 align="center">
           {{title}}
         </h1>
-  </div>
+      </div>
+  <h4 align="center"> {{Status}} </h4>
+  <table border="1" align="center">
+    <tr>
 
+      <th>Quantidade</th>
+      <th>Descriação</th>
+
+    </tr>
+    <tr *ngFor="let itens of solicitacao">
+      <td> {{itens.quantidade}} </td>
+      <td>  {{itens.nome}} </td>
+
+    </tr>
+  </table>
+  
+
+
+
+  <br> <br>
+  <h4>Pedido</h4>
   <div class="form-group">
     <label> Nome: </label>
-    <input type="text" class="control-form"  [(ngModel)]="orderModel.name" name="name" >
+    <input type="text" class="form-control" [(ngModel)]="orderModel.name" name="name">
   </div>
 
-  
+
 
   <div class="form-group">
     <label> E-mail: </label>
-    <input type="email" class="control-form" [(ngModel)]="orderModel.email" name="email">
+    <input type="email" class="form-control" [(ngModel)]="orderModel.email" name="email">
   </div>
 
   <div class="form-group">
     <label> Telefone: </label>
-    <input type="tel" class="control-form" [(ngModel)]="orderModel.phone" name="phone">
+    <input type="tel" class="form-control" [(ngModel)]="orderModel.phone" name="phone">
   </div>
 
+
   <div class="form-group">
+    <label> O que você gostaria de beber </label>
     <select class="custom-select" [(ngModel)]="orderModel.drink" name="drink">
-      <option value=""> O que você gostaria de beber? </option>
+      <option value=""> Selecionar</option>
       <option value="{{b}} " *ngFor='let b of bebidas'> {{b}} </option>
-      <option> mais tarde usaremos uma diretiva para preencher as opções do menu suspenso </option>
     </select>
   </div>
 
   <div class="form-group">
-    <label> Quente ou frio? </label>
-    <div class="check-form">
-      <input class="formulário-verificação-entrada" type="radio" [(ngModel)]="orderModel.tempPreference"
-        name="tempPreference" value="Quente">
-      <label class="form-check-label"> Quente </label>
-    </div>
-    <div class="check-form">
-      <input class="formulário-verificação-entrada" type="radio" [(ngModel)]="orderModel.tempPreference"
-        name="tempPreference" value="Frio">
-      <label class="form-check-label"> Frio </label>
-    </div>
+    <label> Quantidade: </label>
+    <input type="tel" class="form-control" [(ngModel)]="orderModel.quantidadebebida" name="quantidadebebida">
   </div>
 
-  <div class="verificação de formulário mb-3">
-    <input class="formulário-verificação-entrada" type="caixa de seleção" nome="sendmsg">
-    <label class="form-check-label"> Envie-me uma mensagem de texto quando meu pedido estiver pronto </label>
+  <div class="form-group">
+    <label> O que você gostaria de Comer </label>
+    <select class="custom-select" [(ngModel)]="orderModel.comer" name="comer">
+      <option value=""> Selecionar</option>
+      <option value="{{c}} " *ngFor='let c of food'> {{c}} </option>
+    </select>
   </div>
 
-  <button class="btn btn-primary" > Fazer pedido </button>
+  <div class="form-group">
+    <label> Quantidade: </label>
+    <input type="tel" class="form-control" [(ngModel)]="orderModel.quantidadecomer" name="quantidadecomer">
+  </div>
+
+
+  <button class="btn btn-primary" (click)="addItem()"> Adicionar Pedido </button>
+  <br><br>
+  <button class="btn btn-primary" (click)="confirma()"> Finalizar Pedido </button>
 
 
 </form>
 
-<br>
-<h4>Pedidos</h4>
-
-<div >  
-
-  <ul *ngIf= "orderModel.name != '' "  >Nome: {{orderModel.name}} </ul>
-  <ul *ngIf= "orderModel.email != '' ">Email: {{orderModel.email}} </ul>
-  <ul *ngIf='orderModel.phone != 0' >Tel: {{orderModel.phone}} </ul>
-  <ul *ngIf= "orderModel.drink != '' ">Drink: {{orderModel.drink}} </ul>
-  <ul *ngIf= "orderModel.tempPreference != '' ">Temperatura: {{orderModel.tempPreference}} </ul>
-
-</div>
-
-
-<h2>Equipe</h2>
-<li *ngFor='let m of membros'> {{m}} </li>
