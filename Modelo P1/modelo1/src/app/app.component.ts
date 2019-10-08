@@ -3,7 +3,6 @@ import { Order } from './servicos/order.service';
 import { Tabela } from './servicos/tabela.service';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +17,8 @@ export class AppComponent {
 
   membros = ['Fernando', 'Paulo', 'Tais'];
   bebidas = ['café', 'chá', 'leite'];
- 
+  cafe = 'café'
+  valorBebidas= [2,3,4];
   food = ['Pao de queijo', 'Torta', 'Bolo de cenoura']
 
 
@@ -27,7 +27,7 @@ export class AppComponent {
 
   mensagem: String = 'Sem pedido';
   Status: String = 'Tabela de Pedidos';
-  orderTabela = new Tabela('', 0);
+  orderTabela = new Tabela('', 0,0);
   solicitacao: any = [];
 
   confirma() {
@@ -42,7 +42,8 @@ export class AppComponent {
     if (this.orderModel.quantidadebebida > 0 && this.orderModel.drink != "") {
 
 
-      this.orderTabela= new Tabela(this.orderModel.drink, this.orderModel.quantidadebebida)
+      this.orderTabela= new Tabela(this.orderModel.drink, this.orderModel.quantidadebebida,0)
+
 
       var verifica = false;
 
@@ -51,13 +52,14 @@ export class AppComponent {
         if (this.orderModel.drink == index.nome) {
 
           index.quantidade = Number(index.quantidade) + Number(this.orderModel.quantidadebebida)
-         
+          
 
           verifica = true;
 
         }
 
       }
+
       if (verifica != true ) { this.solicitacao.push(this.orderTabela); }
       var verifica = false;
 
@@ -66,7 +68,7 @@ export class AppComponent {
 
     if (this.orderModel.quantidadecomer > 0 && this.orderModel.comer != "") {
 
-      this.orderTabela = new Tabela(this.orderModel.comer, this.orderModel.quantidadecomer);
+      this.orderTabela = new Tabela(this.orderModel.comer, this.orderModel.quantidadecomer,0);
 
       for (let index of this.solicitacao) {
 
@@ -78,11 +80,10 @@ export class AppComponent {
         }
 
       }
+
       console.log(this.orderModel.comer)
       if (verifica != true ) { this.solicitacao.push(this.orderTabela); }
       var verifica = false;
-
-
 
     }
 
