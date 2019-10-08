@@ -1,0 +1,115 @@
+<div class="container border">
+
+  <form #orderForm="ngForm">
+
+    <div>
+      <h1 align="center">
+        {{title}}
+      </h1>
+    </div>
+    <h4 align="center"> {{Status}} </h4>
+    <table border="1" align="center">
+      <tr>
+
+        <th>Quantidade</th>
+        <th>Descriação</th>
+        <th>Valor</th>
+
+      </tr>
+      <tr *ngFor="let itens of solicitacao">
+        <td> {{itens.quantidade}} </td>
+        <td> {{itens.nome}} </td>
+        <td> {{itens.valor}} </td>
+
+      </tr>
+    </table>
+
+
+
+
+    <br> <br>
+    <h4>Nome Formulario</h4>
+    <div class="form-group">
+      <label> Nome: </label>
+      <input type="text" class="form-control" [(ngModel)]="orderModel.name" name="name">
+    </div>
+
+
+
+    <div class="form-group">
+      <label> E-mail: </label>
+      <input type="email" class="form-control" [(ngModel)]="orderModel.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label> Telefone: </label>
+      <input type="tel" class="form-control" [(ngModel)]="orderModel.phone" name="phone">
+    </div>
+
+
+    <div class="form-group">
+      <label> O que você gostaria de beber </label>
+      <select class="custom-select" [(ngModel)]="orderModel.drink" name="drink">
+        <option value=""> Selecionar</option>
+        <option value="{{b}} " *ngFor='let b of bebidas'> {{b}} </option>
+
+      </select>
+      
+    </div>
+
+    
+
+    <div class="form-group">
+      <label> Quantidade: </label>
+      <input type="tel" class="form-control" [(ngModel)]="orderModel.quantidadebebida" name="quantidadebebida">
+    </div>
+
+    <div class="form-group">
+      <label> O que você gostaria de Comer </label>
+      <select class="custom-select" [(ngModel)]="orderModel.comer" name="comer">
+        <option value=""> Selecionar</option>
+        <option value="{{c}} " *ngFor='let c of food'> {{c}} </option>
+      </select>
+
+   
+    </div>
+
+    <!-- 
+    <div class="input-group mb-3"   >
+      
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="checkbox"  aria-label="Checkbox for following text input">
+        </div>
+      </div>
+      
+      <input type="text"  value=" {{food[0]}} "  class="form-control" [(ngModel)]="orderModel.comer" name="comer1" >
+ 
+    </div>
+    
+    <div class="input-group" *ngFor="let comidas of food">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+        <input type="radio" aria-label="Radio button for following text input" >
+        </div>
+      </div>
+      <input type="text" value="{{comidas}}" class="form-control" aria-label="Text input with radio button">
+    </div>
+   -->
+
+    <div class="form-group">
+      <label> Quantidade: </label>
+      <input type="tel" class="form-control" [(ngModel)]="orderModel.quantidadecomer" name="quantidadecomer">
+    </div>
+
+
+    <button class="btn btn-primary" (click)="addItem()"> Adicionar Pedido </button>
+    <br><br>
+    <button class="btn btn-primary" (click)="confirma()"> Finalizar Pedido </button>
+
+
+  </form>
+
+
+
+</div>
