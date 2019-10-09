@@ -1,0 +1,80 @@
+<div class="container border">
+
+  <form #orderForm="ngForm">
+
+    <div>
+      <h1 align="center">
+        {{title}}
+      </h1>
+    </div>
+    <h4 align="center"> {{Status}} </h4>
+    <table border="1" align="center">
+      <tr>
+
+        <th>Codigo</th>
+        <th>Descriação</th>
+        <th>Valor</th>
+        <th>Desconto</th>
+
+      </tr>
+      <tr *ngFor="let itens of ordemdadosNotaFiscal">
+        <td> {{itens.codigo}} </td>
+        <td> {{itens.descricao}} </td>
+        <td> {{itens.valor_unitario}} </td>
+        <td> {{itens.desconto}} </td>
+
+      </tr>
+    </table>
+
+
+
+
+    <br> <br>
+    <h4>Cadastro Cliente</h4>
+    <div class="form-group">
+      <label> Nome: </label>
+      <input type="text" class="form-control" [(ngModel)]="ordemDadosCliente.nome" name="name">
+    </div>
+
+
+
+    <div class="form-group">
+      <label> E-mail: </label>
+      <input type="email" class="form-control" [(ngModel)]="ordemDadosCliente.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label> Telefone: </label>
+      <input type="tel" class="form-control" [(ngModel)]="ordemDadosCliente.telefone" name="phone">
+    </div>
+
+    <h4>Produtos </h4>
+    <div class="form-group">
+      <label> O que você gostaria de compra ? </label>
+      <select class="custom-select" [(ngModel)]="ordemProduto.nome"   name="nomeProduto" >
+        <option value=""> Selecionar</option>
+        <option value="{{b.nome}} " *ngFor="let b of estoqueProduto"> {{b.nome}} </option>
+      </select>
+      
+    </div>
+
+   
+
+    <div class="form-group">
+      <label> Quantidade: </label>
+      <input type="tel" class="form-control" [(ngModel)]="ordemProduto.quantidade" name="quantidade">
+    </div>
+
+    
+
+
+    <button class="btn btn-primary" (click)="addItem()"> Inclui item </button>
+    <br><br>
+    <button class="btn btn-primary" (click)="confirma()"> Fecha nota </button>
+
+
+  </form>
+
+
+
+</div>
