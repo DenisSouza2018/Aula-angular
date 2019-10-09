@@ -17,10 +17,10 @@ export class AppComponent {
   totaldaNota = 0;
 
   estoqueProduto: dadosProdutos[] = [
-    new dadosProdutos(50, "Calça Preta", 52, 0, 10),
-    new dadosProdutos(40, 'Blusa Azul', 42.50, 0, 10),
-    new dadosProdutos(30, 'Shot nike', 12, 0, 10),
-    new dadosProdutos(20, 'Camiseta Cinza M', 25, 0, 10),
+    new dadosProdutos(50, "Calça Preta", 10, 0, 20),
+    new dadosProdutos(40, 'Blusa Azul', 42.50, 0, 30),
+    new dadosProdutos(30, 'Shot nike', 12, 0, 20),
+    new dadosProdutos(20, 'Camiseta Cinza M', 25, 0, 20),
     new dadosProdutos(10, 'Saia M Violeta', 20, 0, 10)
   ]
   ordemdadosNotaFiscal: any = [];
@@ -84,11 +84,12 @@ export class AppComponent {
     this.totaldoDesconto = 0;
     this.totaldaNota = 0;
 
-
+    let valor;
     for (let index of this.listaCompra) {
-
+      valor = index.desconto / 100
       this.totalNotaSemDesconto += index.valor_unitario * index.quantidade
-      this.totaldoDesconto = this.totalNotaSemDesconto * (index.desconto / 100)
+      this.totaldoDesconto = this.totalNotaSemDesconto * valor
+      index.desconto = index.quantidade * index.valor_unitario * valor
     }
 
     this.totaldaNota = this.totalNotaSemDesconto - this.totaldoDesconto

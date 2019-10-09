@@ -44,11 +44,13 @@
           <th>Nome Produto</th>
           <th>Quantidade</th>
           <th>Valor Unitario</th>
+          <th>Valor do desconto</th>
         </tr>
         <tr *ngFor="let index of listaCompra">
           <td>{{index.descricao}}</td>
           <td>{{index.quantidade}}</td>
           <td>{{index.valor_unitario}}</td>
+          <td>{{index.desconto}}</td>
 
         </tr>
       </table>
@@ -57,10 +59,10 @@
       <label>Total da Nota sem descontro:</label>
       <input type="number" class="form-control" disabled value="{{totalNotaSemDesconto}}">
 
-      <label>Total do desconto 10%:</label>
+      <label>Total do desconto:</label>
       <input type="number" class="form-control" disabled value="{{totaldoDesconto}}">
 
-      <label>Total da Nota </label>
+      <label>Total da Nota com desconto </label>
       <input type="number" class="form-control" disabled value="{{totaldaNota}}">
     </div>
 
