@@ -7,21 +7,26 @@
         {{title}}
       </h1>
     </div>
+    <div>
+      <h4 align="center">
+        {{ordemDadosCliente.nome}}
+      </h4>
+    </div>
     <h4 align="center"> {{Status}} </h4>
     <table border="1" align="center">
       <tr>
 
-        <th>Codigo</th>
-        <th>Descriação</th>
+        <th>Quantidade</th>
+        <th>Nome</th>
         <th>Valor</th>
-        <th>Desconto</th>
+        
 
       </tr>
-      <tr *ngFor="let itens of ordemdadosNotaFiscal">
-        <td> {{itens.codigo}} </td>
-        <td> {{itens.descricao}} </td>
-        <td> {{itens.valor_unitario}} </td>
-        <td> {{itens.desconto}} </td>
+      <tr *ngFor="let itens of listaProdutos">
+        <td> {{itens.quantidade}} </td>
+        <td> {{itens.nome}} </td>
+        <td> {{itens.valor}} </td>
+        
 
       </tr>
     </table>
@@ -53,7 +58,7 @@
       <label> O que você gostaria de compra ? </label>
       <select class="custom-select" [(ngModel)]="ordemProduto.nome"   name="nomeProduto" >
         <option value=""> Selecionar</option>
-        <option value="{{b.nome}} " *ngFor="let b of estoqueProduto"> {{b.nome}} </option>
+        <option value="{{b.nome}}" *ngFor="let b of estoqueProduto"> {{b.nome}} </option>
       </select>
       
     </div>
