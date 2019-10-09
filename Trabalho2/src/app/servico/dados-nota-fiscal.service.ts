@@ -3,6 +3,7 @@ export class dadosNotaFiscal {
      public codigo: number,
      public descricao: string,
      public valor_unitario: number,
-     public desconto: number
+     public desconto: number,
+     public quantidade: number
   ){}
 } 

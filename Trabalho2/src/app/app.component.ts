@@ -12,49 +12,94 @@ import { dadosProdutos } from './servico/dados-produtos.service';
 export class AppComponent {
   title = 'Trabalho2';
 
+  totalNotaSemDesconto = 0;
+  totaldoDesconto = 0;
+  totaldaNota = 0;
 
   estoqueProduto: dadosProdutos[] = [
-    new dadosProdutos(50, "Calça Preta", 52, 0),
-    new dadosProdutos(40, 'Blusa Azul', 42.50, 0),
-    new dadosProdutos(30, 'Shot nike', 12, 0),
-    new dadosProdutos(20, 'Camiseta Cinza M', 25, 0),
-    new dadosProdutos(10, 'Saia M Violeta', 20, 0)
+    new dadosProdutos(50, "Calça Preta", 52, 0, 10),
+    new dadosProdutos(40, 'Blusa Azul', 42.50, 0, 10),
+    new dadosProdutos(30, 'Shot nike', 12, 0, 10),
+    new dadosProdutos(20, 'Camiseta Cinza M', 25, 0, 10),
+    new dadosProdutos(10, 'Saia M Violeta', 20, 0, 10)
   ]
-  ordemdadosNotaFiscal: dadosNotaFiscal[];
-  ordemProduto = new dadosProdutos(0, '', 0, 0);
+  ordemdadosNotaFiscal: any = [];
+  listaCompra: any = [];
+  ordemProduto = new dadosProdutos(0, '', 0, 0, 0);
   ordemDadosCliente = new dadosCliente('', '', 0);
-  orNotaFical = new dadosNotaFiscal(0, "", 0, 0);
+  orNotaFical = new dadosNotaFiscal(0, '', 0, 0, 0);
 
 
 
 
-
-  listaProdutos: any[];
 
   addItem() {
 
     let verifica = false;
 
-    // Criando o produto novo
-    if (this.ordemProduto.nome != '' && this.ordemProduto.quantidade != 0) {
+    
 
-      this.ordemProduto = new dadosProdutos(0, this.ordemProduto.nome, 0, this.ordemProduto.quantidade)
+    // Criando o produto novo
+    if (this.ordemProduto.nome != '' && this.ordemProduto.quantidade > 0 && this.ordemDadosCliente.nome != '') {
+
+      this.orNotaFical = new dadosNotaFiscal(0, this.ordemProduto.nome, 0, 0, 0)
 
       for (let index of this.estoqueProduto) {
-        if (this.ordemProduto.nome == index.nome) {
-          this.ordemProduto.codigo = index.codigo;
-          this.ordemProduto.valor = index.valor;
+        if (this.orNotaFical.descricao == index.nome) {
+          this.orNotaFical.codigo = index.codigo;
+          this.orNotaFical.valor_unitario = index.valor;
+          this.orNotaFical.quantidade = this.ordemProduto.quantidade;
+          for (let index of this.estoqueProduto) {
+            if (this.orNotaFical.codigo == index.codigo)
+              this.orNotaFical.desconto = index.desconto
+          }
         }
       }
-      console.log(this.ordemProduto)
-      this.listaProdutos.push(this.ordemProduto);
+
+
+
+      for (let index of this.listaCompra) {
+        if (index.descricao == this.orNotaFical.descricao) {
+          index.quantidade = Number(this.orNotaFical.quantidade) + Number(index.quantidade);
+          verifica = true;
+        }
+      }
+
+      if (verifica != true) this.listaCompra.push(this.orNotaFical);
+
+      verifica = false;
+
+
+
     }
 
 
 
 
+  }
+
+  confirma() {
+
+    this.totalNotaSemDesconto = 0;
+    this.totaldoDesconto = 0;
+    this.totaldaNota = 0;
+
+
+    for (let index of this.listaCompra) {
+
+      this.totalNotaSemDesconto += index.valor_unitario * index.quantidade
+      this.totaldoDesconto = this.totalNotaSemDesconto * (index.desconto / 100)
+    }
+
+    this.totaldaNota = this.totalNotaSemDesconto - this.totaldoDesconto
+
+
+
 
   }
+
+
+
 
 
 }

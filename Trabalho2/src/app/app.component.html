@@ -7,30 +7,62 @@
         {{title}}
       </h1>
     </div>
+
     <div>
-      <h4 align="center">
-        {{ordemDadosCliente.nome}}
-      </h4>
+      <h4 align="center">Cliente: {{ordemDadosCliente.nome}}</h4>
+      <h5 align="center">Carinho de Compra</h5>
+      <table border="1" align="center">
+
+        <tr>
+
+          <th>Quantidade</th>
+          <th>Nome</th>
+          <th>Valor</th>
+
+
+        </tr>
+        <tr *ngFor="let itens of listaCompra">
+          <td> {{itens.quantidade}} </td>
+          <td> {{itens.descricao}} </td>
+          <td> {{itens.valor_unitario}} </td>
+
+
+        </tr>
+      </table>
     </div>
-    <h4 align="center"> {{Status}} </h4>
-    <table border="1" align="center">
-      <tr>
+    <br>
 
-        <th>Quantidade</th>
-        <th>Nome</th>
-        <th>Valor</th>
-        
 
-      </tr>
-      <tr *ngFor="let itens of listaProdutos">
-        <td> {{itens.quantidade}} </td>
-        <td> {{itens.nome}} </td>
-        <td> {{itens.valor}} </td>
-        
 
-      </tr>
-    </table>
+    <div *ngIf="totalNotaSemDesconto > 0 ">
+      <h4>Nota Fiscal da compra do Cliente: {{ordemDadosCliente.nome}} </h4>
 
+      <h5>Produtos Comprados</h5>
+
+      <table border="1">
+        <tr>
+          <th>Nome Produto</th>
+          <th>Quantidade</th>
+          <th>Valor Unitario</th>
+        </tr>
+        <tr *ngFor="let index of listaCompra">
+          <td>{{index.descricao}}</td>
+          <td>{{index.quantidade}}</td>
+          <td>{{index.valor_unitario}}</td>
+
+        </tr>
+      </table>
+
+      <br>
+      <label>Total da Nota sem descontro:</label>
+      <input type="number" class="form-control" disabled value="{{totalNotaSemDesconto}}">
+
+      <label>Total do desconto 10%:</label>
+      <input type="number" class="form-control" disabled value="{{totaldoDesconto}}">
+
+      <label>Total da Nota </label>
+      <input type="number" class="form-control" disabled value="{{totaldaNota}}">
+    </div>
 
 
 
@@ -56,21 +88,21 @@
     <h4>Produtos </h4>
     <div class="form-group">
       <label> O que você gostaria de compra ? </label>
-      <select class="custom-select" [(ngModel)]="ordemProduto.nome"   name="nomeProduto" >
+      <select class="custom-select" [(ngModel)]="ordemProduto.nome" name="nomeProduto">
         <option value=""> Selecionar</option>
         <option value="{{b.nome}}" *ngFor="let b of estoqueProduto"> {{b.nome}} </option>
       </select>
-      
+
     </div>
 
-   
+
 
     <div class="form-group">
       <label> Quantidade: </label>
       <input type="tel" class="form-control" [(ngModel)]="ordemProduto.quantidade" name="quantidade">
     </div>
 
-    
+
 
 
     <button class="btn btn-primary" (click)="addItem()"> Inclui item </button>

@@ -3,6 +3,7 @@ export class dadosProdutos {
      public codigo: number,
      public nome: string,
      public valor: number,
-     public quantidade: number
+     public quantidade: number,
+     public desconto: number
   ){}
 } 
