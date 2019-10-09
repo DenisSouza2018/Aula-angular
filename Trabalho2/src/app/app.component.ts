@@ -10,7 +10,7 @@ import { dadosProdutos } from './servico/dados-produtos.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Trabalho2';
+  title = 'Loja de confecções';
 
   totalNotaSemDesconto = 0;
   totaldoDesconto = 0;
