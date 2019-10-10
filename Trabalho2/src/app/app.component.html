@@ -12,7 +12,7 @@
       <h4 align="center">Cliente: {{ordemDadosCliente.nome}}</h4>
       <h5 align="center">Carinho de Compra</h5>
       <table border="1" align="center">
-
+        <thead>
         <tr>
 
           <th>Quantidade</th>
@@ -21,6 +21,7 @@
 
 
         </tr>
+      </thead>
         <tr *ngFor="let itens of listaCompra">
           <td> {{itens.quantidade}} </td>
           <td> {{itens.descricao}} </td>
