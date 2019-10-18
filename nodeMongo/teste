@@ -1,0 +1,15 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const port = 3000; //porta padrão
+
+//definindo as rotas
+const router = express.Router();
+router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
+app.use('/', router); // requisições que chegam na raiz devem ser enviadas para o router
+
+//inicia o servidor
+app.listen(port);
+console.log('API funcionando!');
+
+
