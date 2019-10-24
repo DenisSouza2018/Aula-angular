@@ -1,28 +1,25 @@
 <h3>Cadastrar Aluno</h3>
 
 <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Nome</label>
-          <input type="text" 
-          class="form-control" 
-          id="Nome" 
-          [(ngModel)]="cliente.nome"
-          aria-describedby="nomeHelp" 
-          placeholder="Insira nome do aluno"
-          
-          >
-        </div>
-        <div class="form-group">
-                <label for="exampleInputEmail1">Data de Nascimento</label>
-                <input type="date"
-                 class="form-control" 
-                 id="Data"
-                 [(ngModel)]="cliente.data"
-                 
-                 >
-        </div>
-   
-        
-        
-        <button class="btn btn-primary" (click)="salvar()" >Salvar</button>
- </form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Matricula</label>
+    <input type="number" class="form-control" name="matricula" [(ngModel)]="cliente.mat_aluno" 
+      >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome</label>
+    <input type="text" class="form-control" name="Nome" [(ngModel)]="cliente.nome_aluno" 
+      placeholder="Insira nome do aluno">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Data de Nascimento</label>
+    <input type="date" class="form-control" name="Data" [(ngModel)]="cliente.data_aluno">
+  </div>
+
+
+
+
+  <button class="btn btn-primary" (click)="salvar()">Salvar</button>
+  <br/><br/><br/>
+  <input type="text" value="{{mensagem}}" disabled>
+</form>

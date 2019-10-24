@@ -9,23 +9,28 @@ import { HttpClient } from '@angular/common/http';
 export class AlunoInserirComponent implements OnInit {
   cliente: any;
   resposta: any;
+  mensagem: any;
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
    this.cliente= {};
     this.resposta ={};
+    this.mensagem =[];
   }
 
   salvar() {
-    const req = this.httpClient.post("http://127.0.0.1:3000/add/clientes", this.cliente).toPromise();
-
+    
+  
+    const req = this.httpClient.post("http://localhost:3000/add/aluno", this.cliente).toPromise();
     req.then((resposta) => {
       this.resposta = resposta;
+      this.mensagem = "Cadastrado com Sucesso";
     }).catch((erro) => {
       this.resposta = erro;
+      this.mensagem = "Erro ";
     });
-
+ 
   }
 
 }

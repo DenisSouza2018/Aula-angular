@@ -17,9 +17,9 @@ import { MatriculaConsultarComponent } from './Matricula/matricula-consultar/mat
 import { MatriculaAlterarComponent } from './Matricula/matricula-alterar/matricula-alterar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatriculaComponent } from './matricula/matricula.component';
-import { DisciplinaComponent } from './disciplina/disciplina.component';
-import { AlunoComponent } from './aluno/aluno.component';
+import { MatriculaComponent } from './Matricula/matricula.component';
+import { DisciplinaComponent } from './Disciplina/disciplina.component';
+import { AlunoComponent } from './Aluno/aluno.component';
 import { HomeComponent } from './home/home.component';
 
 
