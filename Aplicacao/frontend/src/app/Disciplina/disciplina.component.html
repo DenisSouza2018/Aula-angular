@@ -1,1 +1,24 @@
-<p>disciplina works!</p>
+<a class="btn btn-primary" routerLink="/disciplina/cadastro" role="button">Cadastrar </a>
+<a class="btn btn-primary" routerLink="/disciplina/deletar" role="button">Deletar </a>
+<a class="btn btn-primary" routerLink="/disciplina/consulta" role="button">Consultar </a>
+<a class="btn btn-primary" routerLink="/disciplina/alterar" role="button">Alerar </a>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Credito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let disciplina of disciplinas">
+            <td>{{ disciplina.codigo }}</td>
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.creditos }}</td>
+        </tr>
+    </tbody>
+</table>

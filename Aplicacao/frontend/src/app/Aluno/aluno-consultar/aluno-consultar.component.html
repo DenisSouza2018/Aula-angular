@@ -1,1 +1,38 @@
-<p>aluno-consultar works!</p>
+<h3>Consultar Aluno</h3>
+
+
+<form >
+
+  <div class="form-group">
+    <label for="matricula">Matricula</label>
+    <input type="number"
+   
+     name="id" 
+     id="id"
+      [(ngModel)]="aluno.id">
+
+  </div>
+
+  <button  class="btn btn-primary" (click)="consultar()">Buscar</button>
+
+</form>
+
+<hr>
+
+<table class="table" >
+  
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nome</th>
+      <th>Data Nascimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of aluno">
+      <td>{{ a.codigo }}</td>
+      <td>{{ a.nome }}</td>
+      <td>{{ a.dt_nasc }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,10 +1,26 @@
 
 
+<a class="btn btn-primary" routerLink="/aluno/cadastro" role="button">Cadastrar </a>
+<a class="btn btn-primary" routerLink="/aluno/deletar" role="button">Deletar </a>
+<a class="btn btn-primary" routerLink="/aluno/consulta" role="button">Consultar </a>
+<a class="btn btn-primary" routerLink="/aluno/alterar" role="button">Alerar </a>
 
-<ul class="list-group">
-        <li class="list-group-item" routerLink="/aluno/cadastro">Cadastar Aluno</li>
-        <li class="list-group-item">Deletar Aluno</li>
-        <li class="list-group-item">Consultar Aluno</li>
-        <li class="list-group-item">Alterar dados Aluno</li>
-        
-      </ul>
+
+<hr>
+<h3>Lista de Alunos</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nome</th>
+      <th>Data Nascimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let aluno of alunos">
+      <td>{{ aluno.codigo }}</td>
+      <td>{{ aluno.nome }}</td>
+      <td>{{ aluno.dt_nasc }}</td>
+    </tr>
+  </tbody>
+</table>

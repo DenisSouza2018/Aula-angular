@@ -1,1 +1,25 @@
-<p>aluno-alterar works!</p>
+
+
+<h3>Alterar Aluno</h3>
+
+
+<form >
+
+  <div class="form-group">
+    <label for="matricula">Matricula</label>
+    <input type="number"
+   
+     name="id" 
+     id="id"
+    [(ngModel)]="aluno.id">
+
+  </div>
+
+  <button  class="btn btn-primary" (click)="alterar()">Finalizar</button> 
+ 
+
+</form>
+
+<hr>
+
+<input type="text" value="{{mensagem}}" disabled> 

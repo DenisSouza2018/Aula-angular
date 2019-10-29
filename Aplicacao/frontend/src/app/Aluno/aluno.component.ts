@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-aluno',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aluno.component.css']
 })
 export class AlunoComponent implements OnInit {
+  
 
-  constructor() { }
+  alunos: any;
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.alunos = [];
+    const req = this.httpClient.get('http://localhost:3000/alunos/').toPromise();
+    req.then((alunos) => {
+      this.alunos = alunos;
+    })
   }
-
 }

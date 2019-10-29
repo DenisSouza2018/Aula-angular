@@ -3,10 +3,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = 3000; //porta padrão
 const mysql = require('mysql');
+var cors = require('cors')
 //configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cors()) //  < --------------- IMPORTANTE
 //definindo as rotas
 const router = express.Router();
 router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
@@ -47,6 +49,16 @@ router.post('/add/matricula', (req, res) => {
     execSQLQuery(`INSERT INTO matricula(codAluno, codDiscip) VALUES('${cod_aluno}','${cod_disc}')`, res);
 });
 
+// Cadastro de aluno
+router.post('/add/aluno', (req, res) => {
+    const mat_aluno = parseInt(req.body.mat_aluno);
+    const nome_aluno = req.body.nome_aluno;
+    const data_aluno = req.body.data_aluno;
+    execSQLQuery(`INSERT INTO aluno (codigo,nome,dt_nasc) VALUES (${mat_aluno},"${nome_aluno}","${data_aluno}")`,res);
+  
+});
+
+
 // Listagem de Alunos por disciplina
 router.get('/disciplina/:id?', (req, res) => {
 
@@ -64,7 +76,7 @@ router.get('/disciplina/:id?', (req, res) => {
 // ROTAS EXTRAS
 
  // Lista Disciplina
-router.get('/disciplina', (req, res) => {
+router.get('/disciplinas', (req, res) => {
     execSQLQuery('SELECT * FROM discip', res);
 })
 
