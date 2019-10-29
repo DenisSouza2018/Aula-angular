@@ -1,0 +1,47 @@
+
+<h2>Cadastrar Disciplina</h2>
+<table class="table">
+    
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>creditos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr >
+            <td><input type="text" name="Dcodigo" id="DCodigo" [(ngModel)]="disciplina.codigo"></td>
+            <td><input type="text" name="DNome" id="DNome" [(ngModel)]="disciplina.nome"></td>
+            <td><input type="text" name="Creditos" id="Creditos" [(ngModel)]="disciplina.creditos"></td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" (click)="alterar_disciplina()">
+    Alterar
+</button>
+<hr>
+<h2>Alterar Dados Aluno</h2>
+<table class="table">
+    
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr >
+            <td><input type="text" name="codigo" id="Codigo" [(ngModel)]="aluno.codigo"></td>
+            <td><input type="text" name="Nome" id="Nome" [(ngModel)]="aluno.nome"></td>
+            <td><input type="date" name="Data" id="Data" [(ngModel)]="aluno.dt_nasc"></td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" (click)="alterar_aluno()">
+    Alterar
+</button>
+<hr>

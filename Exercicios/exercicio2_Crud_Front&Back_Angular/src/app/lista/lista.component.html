@@ -1,0 +1,35 @@
+<h2>Disciplinas</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Creditos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let disciplina of disciplinas">
+            <td>{{ disciplina.codigo }}</td>
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.creditos }}</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h2>Alunos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aluno of alunos">
+            <td>{{ aluno.codigo }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.dt_nasc }}</td>
+        </tr>
+    </tbody>
+</table>

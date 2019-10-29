@@ -1,0 +1,41 @@
+<h2>Aluno</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>CODIGO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" name="codigo" id="codigo" [(ngModel)]="aluno.codigo"></td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" (click)="deleta_aluno()">
+    Deleta
+</button>
+<hr>
+<h2>Disciplina</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>CODIGO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" name="Dcodigo" id="Dcodigo" [(ngModel)]="disciplina.codigo"></td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" (click)="deleta_disciplina()">
+    Deleta
+</button>
+
+
+<!--*ngIf="resposta.protocol41 === true"-->
+<div class="alert alert-success" role="alert" >
+        Falta Validar mensagem
+</div>
