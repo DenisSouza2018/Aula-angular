@@ -12,6 +12,9 @@
     <button class="btn btn-success" (click)="menu = 'Atualiza'">
       Atualiza Dados
     </button>
+    <button class="btn btn-success" (click)="menu = 'Matricula'">
+      Matricula
+    </button>
   </div>
 
   <div class="row" *ngIf="menu == 'Lista'">
@@ -35,10 +38,16 @@
     </div>
   </div>
 
-
   <div class="row" *ngIf="menu == 'Atualiza'">
     <div class="col-md-12">
       <app-atualiza></app-atualiza>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="menu == 'Matricula'">
+    <div class="col-md-12">
+      <app-matricula>
+      </app-matricula>
     </div>
   </div>
 

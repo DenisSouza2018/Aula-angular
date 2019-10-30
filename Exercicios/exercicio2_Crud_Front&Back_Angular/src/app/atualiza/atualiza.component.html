@@ -1,7 +1,6 @@
-
-<h2>Cadastrar Disciplina</h2>
+<h2>Atualizar Disciplina</h2>
 <table class="table">
-    
+
     <thead>
         <tr>
             <th>Codigo</th>
@@ -10,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr >
+        <tr>
             <td><input type="text" name="Dcodigo" id="DCodigo" [(ngModel)]="disciplina.codigo"></td>
             <td><input type="text" name="DNome" id="DNome" [(ngModel)]="disciplina.nome"></td>
             <td><input type="text" name="Creditos" id="Creditos" [(ngModel)]="disciplina.creditos"></td>
@@ -21,19 +20,30 @@
 <button class="btn btn-success" (click)="alterar_disciplina()">
     Alterar
 </button>
+<br>
+<div *ngIf="resposta2.status === 500" class="alert alert-danger" role="alert">
+    Formulario Incorreto
+</div>
+<div *ngIf="resposta2.affectedRows === 0" class="alert alert-danger" role="alert">
+        Codigo Invalido
+</div>
+<div *ngIf="resposta2.protocol41 === true && resposta2.affectedRows === 1 " class="alert alert-success" role="alert">
+    Disciplina Atualizada com Sucesso
+</div>
 <hr>
-<h2>Alterar Dados Aluno</h2>
+
+<h2>Atualizar Dados do Aluno</h2>
 <table class="table">
-    
+
     <thead>
         <tr>
-            <th>Codigo</th>
+            <th>Matricula</th>
             <th>Nome</th>
             <th>Data Nascimento</th>
         </tr>
     </thead>
     <tbody>
-        <tr >
+        <tr>
             <td><input type="text" name="codigo" id="Codigo" [(ngModel)]="aluno.codigo"></td>
             <td><input type="text" name="Nome" id="Nome" [(ngModel)]="aluno.nome"></td>
             <td><input type="date" name="Data" id="Data" [(ngModel)]="aluno.dt_nasc"></td>
@@ -45,3 +55,15 @@
     Alterar
 </button>
 <hr>
+<br>
+<div *ngIf="resposta.status === 500" class="alert alert-danger" role="alert">
+    Formulario Incorreto
+</div>
+
+
+<div *ngIf="resposta.affectedRows === 0" class="alert alert-danger" role="alert">
+        Matricula Invalido
+</div>
+<div *ngIf="resposta.protocol41 === true && resposta.affectedRows === 1 " class="alert alert-success" role="alert">
+    Sucesso
+</div>

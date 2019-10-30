@@ -44,13 +44,13 @@ router.delete('/delete/disciplina/:id', (req, res) => {
 // CADASTRAR ALUNO OU DISCIPLINA */
 // SQL = INSERT into aluno VALUES(1001,"DenisSouzadaRosa","2000-07-19")
 router.post('/add/alunos', (req, res) => {
-    const codigo = parseInt(req.body.codigo.substring(0,11));
+    const codigo = parseInt(req.body.codigo.substring(0, 11));
     const nome = req.body.nome.substring(0, 150);
     const dt_nasc = req.body.dt_nasc.substring(0, 11);
     execSQLQuery(`INSERT INTO aluno VALUES('${codigo}','${nome}','${dt_nasc}')`, res);
 });
 router.post('/add/disciplinas', (req, res) => {
-    const codigo = parseInt(req.body.codigo.substring(0,11));
+    const codigo = parseInt(req.body.codigo.substring(0, 11));
     const nome = req.body.nome.substring(0, 150);
     const creditos = parseInt(req.body.creditos.substring(0, 11));
     execSQLQuery(`INSERT INTO discip VALUES('${codigo}','${nome}','${creditos}')`, res);
@@ -58,7 +58,7 @@ router.post('/add/disciplinas', (req, res) => {
 
 // Alterar ALUNO OU DISCIPLINA */
 router.post('/alterar/aluno', (req, res) => {
-    const codigo = parseInt(req.body.codigo.substring(0,11));
+    const codigo = parseInt(req.body.codigo.substring(0, 11));
     const nome = req.body.nome.substring(0, 150);
     const dt_nasc = req.body.dt_nasc.substring(0, 11);
     execSQLQuery(`UPDATE aluno SET nome='${nome}',dt_nasc='${dt_nasc}'
@@ -66,12 +66,51 @@ router.post('/alterar/aluno', (req, res) => {
 });
 //UPDATE discip SET nome = "REDE 2", creditos = 64 WHERE codigo = 4
 router.post('/alterar/disciplina', (req, res) => {
-    const codigo = parseInt(req.body.codigo.substring(0,11));
+    const codigo = parseInt(req.body.codigo.substring(0, 11));
     const nome = req.body.nome.substring(0, 150);
     const creditos = parseInt(req.body.creditos.substring(0, 11));
-    
+
     execSQLQuery(`UPDATE discip SET nome='${nome}',creditos=${creditos} WHERE codigo=${codigo}`, res);
 });
+
+// Retornar alunos matriculados em um disciplina
+router.get('/matricula/:id?', (req, res) => {
+    let filter = '';
+    if (req.params.id) {
+        sql = `SELECT a.codigo,a.nome 
+    FROM aluno AS a
+    INNER JOIN matricula AS m 
+    ON a.codigo = m.codAluno
+    WHERE m.codDiscip = ${parseInt(req.params.id)}`;
+    }
+    execSQLQuery(sql, res);
+})
+router.post('/add/matriculas',(req,res)=>{
+    const cod_aluno = parseInt(req.body.cod_aluno.substring(0,11));
+    const cod_disc = parseInt(req.body.cod_disc.substring(0,11));
+    if(cod_aluno != null && cod_disc != null){
+        sql = `INSERT INTO matricula
+         VALUES(${cod_aluno},
+         ${cod_disc})`
+    }
+    execSQLQuery(sql,res);
+})
+// Deletar uma Disciplina pelo Codigo
+router.post('/remove/matriculas/', (req, res) => {
+    const cod_disc = parseInt(req.body.cod_disc.substring(0,11));
+    const cod_aluno = parseInt(req.body.cod_aluno.substring(0,11));
+   
+
+    if(cod_disc != null && cod_aluno != null){
+    sql=`DELETE FROM matricula 
+    WHERE   matricula.codDiscip= ${cod_disc}
+    AND     matricula.codAluno = ${cod_aluno}`
+}
+
+    execSQLQuery(sql, res);
+})
+
+
 
 
 //inicia o servidor
@@ -89,7 +128,7 @@ function execSQLQuery(sqlQry, res) {
 
     });
 
-    connection.query(sqlQry, function(error, results, fields) {
+    connection.query(sqlQry, function (error, results, fields) {
         if (error)
             res.json(error);
         else

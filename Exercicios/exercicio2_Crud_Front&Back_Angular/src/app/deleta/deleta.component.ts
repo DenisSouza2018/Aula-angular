@@ -10,6 +10,7 @@ export class DeletaComponent implements OnInit {
   aluno: any;
   disciplina:any;
   resposta: any;
+  resposta2: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,16 +18,17 @@ export class DeletaComponent implements OnInit {
     this.aluno = {};
     this.disciplina={};
     this.resposta = {};
+    this.resposta2 = {};
   }
 
   deleta_aluno() {
     const req = this.httpClient.delete("http://127.0.0.1:3000/delete/aluno/" + this.aluno.codigo).toPromise();
     req.then((resposta) => {
       this.resposta = resposta;
-      console.log("Deletou");
+     // console.log(resposta);
     }).catch((erro) => {
       this.resposta = erro;
-      console.error("Erro:"+erro);
+    //  console.log(erro);
     });
 
   }
@@ -34,11 +36,11 @@ export class DeletaComponent implements OnInit {
   deleta_disciplina() {
     const req = this.httpClient.delete("http://127.0.0.1:3000/delete/disciplina/" + this.disciplina.codigo).toPromise();
     req.then((resposta) => {
-      this.resposta = resposta;
-      console.log("Deletou");
+      this.resposta2 = resposta;
+      //console.log(resposta);
     }).catch((erro) => {
-      this.resposta = erro;
-      console.log("Erro ao deletar");
+      this.resposta2 = erro;
+      //console.log(erro);
     });
 
   }

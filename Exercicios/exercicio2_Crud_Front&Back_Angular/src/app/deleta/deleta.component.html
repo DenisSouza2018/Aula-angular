@@ -2,7 +2,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>CODIGO</th>
+            <th>Matricula</th>
         </tr>
     </thead>
     <tbody>
@@ -12,15 +12,28 @@
     </tbody>
 </table>
 
-<button class="btn btn-success" (click)="deleta_aluno()">
-    Deleta
+<button class="btn btn-danger" (click)="deleta_aluno()">
+    Excluir
 </button>
+<br>
+<div *ngIf="resposta.errno === 1451" class="alert alert-danger" role="alert">
+    Desmatricular aluno das disciplinas
+</div>
+<div *ngIf="resposta.errno === 1054" class="alert alert-danger" role="alert">
+    Informe a matricula do aluno
+</div>
+
+<div *ngIf="resposta.protocol41 === true" class="alert alert-success" role="alert">
+    Cadastro do aluno removido
+</div>
+
+
 <hr>
 <h2>Disciplina</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>CODIGO</th>
+            <th>Codigo</th>
         </tr>
     </thead>
     <tbody>
@@ -30,12 +43,18 @@
     </tbody>
 </table>
 
-<button class="btn btn-success" (click)="deleta_disciplina()">
-    Deleta
+<button class="btn btn-danger" (click)="deleta_disciplina()">
+    Excluir
 </button>
 
 
-<!--*ngIf="resposta.protocol41 === true"-->
-<div class="alert alert-success" role="alert" >
-        Falta Validar mensagem
+<div *ngIf="resposta2.errno === 1451" class="alert alert-danger" role="alert">
+    Retirar alunos matriculados
+</div>
+<div *ngIf="resposta2.errno === 1054" class="alert alert-danger" role="alert">
+    Informe o codigo da Disciplina
+</div>
+
+<div *ngIf="resposta2.protocol41 === true" class="alert alert-success" role="alert">
+    Disciplina removida com sucesso
 </div>

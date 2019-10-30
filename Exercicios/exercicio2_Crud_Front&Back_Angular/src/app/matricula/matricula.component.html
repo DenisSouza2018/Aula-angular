@@ -1,0 +1,61 @@
+<h2>Realizar Matricula</h2>
+
+<hr>
+
+<div>
+
+    <h4>Selecione Disciplina</h4>
+
+
+
+    <select class="form-control" type="text" [(ngModel)]="escolha">
+        <option *ngFor="let d of disciplinas" [ngValue]="d">
+            <p>{{ d.nome}}</p>
+        </option>
+    </select><br><br>
+
+    <div>
+        <h5 align="center">{{escolha.nome}}</h5>
+        <div class="form-group">
+            <label for="Add">Adicionar Aluno</label>
+            <select class="form-control" type="text" [(ngModel)]="aluno">
+                <option *ngFor="let a of alunos" [ngValue]="a">
+                    <p>{{ a.nome}}</p>
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
+
+        <button type="submit" class="btn btn-primary" (click)="atualiza()">Atualizar</button>
+    </div>
+
+    <div>
+
+        <table class="table">
+            <h6>Lista de Alunos</h6>
+            <thead>
+                <tr>
+                    <th>Matricula</th>
+                    <th >Nome </th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aluno of matriculas">
+                    <td>{{aluno.codigo}}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>
+                        <button class="btn btn-danger" value="aluno" (click)="desvincular(aluno)">Desvincular</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+</div>

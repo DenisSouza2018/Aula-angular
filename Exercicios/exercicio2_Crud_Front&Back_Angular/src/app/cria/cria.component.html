@@ -20,6 +20,19 @@
 <button class="btn btn-success" (click)="salvar_aluno()">
     Add
 </button>
+<br>
+<div *ngIf="resposta.errno === 1062" class="alert alert-danger" role="alert">
+        Aluno já cadastrada
+</div>
+<div *ngIf="resposta.status === 500" class="alert alert-danger" role="alert">
+        Cadastro Incompleto 
+</div>
+<div *ngIf="resposta.protocol41 === true" class="alert alert-success" role="alert">
+        Aluno Cadastrado
+</div>
+
+
+
 <hr>
 <h2>Cadastrar Disciplina</h2>
 <table class="table">
@@ -43,3 +56,13 @@
 <button class="btn btn-success" (click)="salvar_disciplina()">
     Add
 </button>
+<br>
+<div *ngIf="resposta2.errno === 1062" class="alert alert-danger" role="alert">
+        Disciplina já cadastrada
+</div>
+<div *ngIf="resposta2.status === 500" class="alert alert-danger" role="alert">
+        Cadastro Incompleto 
+</div>
+<div *ngIf="resposta2.protocol41 === true" class="alert alert-success" role="alert">
+        Disciplina Cadastrada
+</div>

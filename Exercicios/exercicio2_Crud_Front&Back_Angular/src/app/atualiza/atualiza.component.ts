@@ -12,6 +12,7 @@ export class AtualizaComponent implements OnInit {
   lista_aluno:any;
   lista_disciplina:any;
   resposta: any;
+  resposta2: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,6 +21,7 @@ export class AtualizaComponent implements OnInit {
     this.disciplina = {};
     this.lista_disciplina={};
     this.resposta = {};
+    this.resposta2 = {};
     const req = this.httpClient.get('http://127.0.0.1:3000/aluno/').toPromise();
     req.then((alunos) => {
       this.lista_aluno = alunos;
@@ -37,7 +39,7 @@ export class AtualizaComponent implements OnInit {
 
     req.then((resposta) => {
       this.resposta = resposta;
-      console.log("Sucesso");
+    
     }).catch((erro) => {
       this.resposta = erro;
       console.log("Erro ao Cadastrar");
@@ -48,13 +50,13 @@ export class AtualizaComponent implements OnInit {
 
   alterar_disciplina() {
     const req2 = this.httpClient.post("http://127.0.0.1:3000/alterar/disciplina", this.disciplina).toPromise();
-
+    
     req2.then((resposta) => {
-      this.resposta = resposta;
-      console.log("Sucesso");
+      this.resposta2 = resposta;
+      console.log(resposta);
     }).catch((erro) => {
-      this.resposta = erro;
-      console.log("Erro ao cadastrar");
+      this.resposta2 = erro;
+      console.log(erro);
     });
 
   }

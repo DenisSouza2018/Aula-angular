@@ -8,6 +8,7 @@ import { CriaComponent } from './cria/cria.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AtualizaComponent } from './atualiza/atualiza.component';
+import { MatriculaComponent } from './matricula/matricula.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AtualizaComponent } from './atualiza/atualiza.component';
     ListaComponent,
     DeletaComponent,
     CriaComponent,
-    AtualizaComponent
+    AtualizaComponent,
+    MatriculaComponent
   ],
   imports: [
     BrowserModule,
