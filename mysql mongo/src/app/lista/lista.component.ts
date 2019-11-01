@@ -7,29 +7,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
-  
-  constructor(private httpClient: HttpClient) { }
-
   clientes: any;
-  teste: any;
-  url = 'http://localhost:3000/api/cliente';
-  invocation = new XMLHttpRequest();
 
-
-  
-  
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.clientes = [];
+    const req = this.httpClient.get('http://127.0.0.1:3000/clientes/').toPromise();
 
-   const req = this.httpClient.get(this.url).toPromise();
-   req.then((clientes)=>{
-      this.clientes = clientes
-  })
-  
-  
+    req.then((clientes) => {
+      this.clientes = clientes;
+    })
+
   }
-
- 
 
 }
