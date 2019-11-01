@@ -24,6 +24,7 @@ router.get('/aluno/:id?', (req, res) => {
     if (req.params.id) filter = ' WHERE codigo=' + parseInt(req.params.id);
     execSQLQuery('SELECT * FROM aluno' + filter, res);
 })
+
 // Listar uma Discipplina pelo CODIGO
 router.get('/disciplina/:id?', (req, res) => {
     let filter = '';

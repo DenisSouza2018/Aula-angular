@@ -3,7 +3,7 @@
     
     <thead>
         <tr>
-            <th>Codigo</th>
+            <th>Matricula</th>
             <th>Nome</th>
             <th>Data Nascimento</th>
         </tr>
@@ -22,7 +22,7 @@
 </button>
 <br>
 <div *ngIf="resposta.errno === 1062" class="alert alert-danger" role="alert">
-        Aluno já cadastrada
+        Matricula já cadastrada
 </div>
 <div *ngIf="resposta.status === 500" class="alert alert-danger" role="alert">
         Cadastro Incompleto 

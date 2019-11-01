@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 4000; //porta padrão
+const port = 3000; //porta padrão
 
 //configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +27,7 @@ function consulta(res) {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db(database);
+
         /*Return only the documents with the address "Park Lane 38":*/
         dbo.collection(name_collection).find().toArray(function (err, results) {
             if (err)
@@ -34,13 +35,16 @@ function consulta(res) {
             else
                 res.json(results);
 
-            console.log(result);
+            
          
-            console.log('executou!');
+
         });
     });
 
 }
+
+//Retorna todos clientes no banco
 router.get('/clientes', (req, res) => {
     consulta(res);
 })
+
