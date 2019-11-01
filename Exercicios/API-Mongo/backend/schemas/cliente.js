@@ -2,7 +2,7 @@ const restfull = require('node-restful');
 const mongoose = restfull.mongoose;
 
 const clienteSchema = new mongoose.Schema({
-    id: {type: Number, min:0, require: true},
+    id: {type: Number, require: true},
     nome: {type: String, require: true},
     cpf: {type: String, require: true}
     
