@@ -1,14 +1,16 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Registro (ID)</th>
             <th>Nome</th>
             <th>CPF</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><input type="text" name="Nome" id="Nome" [(ngModel)]="cliente.nome"></td>
-            <td><input type="text" name="CPF" id="CPF" [(ngModel)]="cliente.cpf"></td>
+            <td><input type="number" class="form-control" name="Id" id="Id" [(ngModel)]="cliente.id"></td>
+            <td><input type="text" class="form-control" name="Nome" id="Nome" [(ngModel)]="cliente.nome"></td>
+            <td><input type="number" class="form-control" name="CPF" id="CPF" [(ngModel)]="cliente.cpf"></td>
         </tr>
     </tbody>
 </table>
@@ -16,3 +18,20 @@
 <button class="btn btn-success" (click)="salvar()">
     Add
 </button>
+<br>
+<br>
+<div *ngIf="resposta.id != null" class="alert alert-success" role="alert">
+        <hr>
+        Cadastrado com Sucesso !
+        <hr>
+</div>
+
+
+<br>
+<br>
+<div *ngIf="flag == 'flase'" class="alert alert-danger" role="alert">
+        <hr>
+        Registro já cadastrado !
+        <hr>
+</div>
+

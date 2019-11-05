@@ -1,0 +1,43 @@
+<div>
+    <br>
+    <h3 aling="center" >Selecione o Aluno</h3>
+    <hr>
+    <select class="form-control" type="text" [(ngModel)]="cliente">
+            <option *ngFor="let c of Todosclientes" [ngValue]="c">
+                <p>{{ c.nome}}</p>
+            </option>
+     </select><br>
+
+</div>
+
+
+<div *ngIf="cliente.id != null">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Registro (ID)</th>
+                <th>Nome</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="number" class="form-control" name="Id" id="Id" [(ngModel)]="cliente.id" value="cliente.id" disabled></td>
+                <td><input type="text" class="form-control" name="Nome" id="Nome" [(ngModel)]="cliente.nome" value="cliente.nome"></td>
+                <td><input type="number" class="form-control" name="CPF" id="CPF" [(ngModel)]="cliente.cpf" value="cliente.cpf"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-success" (click)="salvar()">
+        Salvar
+    </button>
+</div>
+
+<br>
+
+<div *ngIf="resposta.id != null" class="alert alert-success" role="alert">
+        <hr>
+        Atualizado com Sucesso !
+        <hr>
+</div>

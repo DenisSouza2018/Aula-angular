@@ -7,13 +7,15 @@ import { DeletaComponent } from './deleta/deleta.component';
 import { CriaComponent } from './cria/cria.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AtualizaComponent } from './atualiza/atualiza.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaComponent,
     DeletaComponent,
-    CriaComponent
+    CriaComponent,
+    AtualizaComponent
   ],
   imports: [
     BrowserModule,

@@ -5,3 +5,4 @@ const mongoLocal = 'mongodb://localhost:27017/empresa';
 module.exports = mongoose.connect(mongoAtlas,{
     useNewUrlParser: true
 });
+

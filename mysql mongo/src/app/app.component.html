@@ -9,6 +9,9 @@
     <button class="btn btn-success" (click)="menu = 'Deleta'">
       Deleta
     </button>
+    <button class="btn btn-success" (click)="menu = 'Update'">
+        Atualiza
+      </button>
   </div>
 
   <div class="row" *ngIf="menu == 'Lista'">
@@ -18,6 +21,12 @@
     </div>
   </div>
 
+  <div class="row" *ngIf="menu == 'Update'">
+      <div class="col-md-12">
+        <app-atualiza>
+        </app-atualiza>
+      </div>
+    </div>
   <div class="row" *ngIf="menu == 'Cria'">
     <div class="col-md-12">
       <app-cria>        
